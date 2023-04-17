@@ -28,10 +28,13 @@ export class Server {
     this.express.use(router);
 
     registerRoutes(router);
-
+    //  Cuando se produce una excepcion o algo no controlado devolvemos INTERNAL_SERVER_ERROR 500
     router.use((err: Error, req: Request, res: Response, next: Function) => {
+      // TODO: Usar un registro de errores
       console.log(err);
-      res.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
+      // Para no propagar el error 
+      // res.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
+      res.status(httpStatus.INTERNAL_SERVER_ERROR).send();
     });
   }
 
