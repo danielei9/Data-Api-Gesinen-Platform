@@ -1,0 +1,6 @@
+const  superAdmin = "SUPER_ADMIN"
+const  adminTech = "ADMIN_TECH"
+const  adminCouncil = "ADMIN_COUNCIL"
+const  adminBusiness = "ADMIN_BUSINESS"
+const  userCouncil = "USER_COUNCIL"
+const  userBusiness = "USER_BUSINESS"

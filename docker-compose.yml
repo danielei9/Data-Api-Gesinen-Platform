@@ -1,0 +1,31 @@
+version: '4'
+
+services:
+  db_auth:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: gesinen
+      POSTGRES_PASSWORD: ER28-0652
+      POSTGRES_DB: gesinen
+    networks:
+      - auth-network
+    ports:
+      - 5432:5432
+  api_auth:
+    build: .
+    ports:
+      - 3000:3000
+    networks:
+      - auth-network
+    depends_on:
+      - db_auth
+    environment:
+      POSTGRES_HOST: db_auth
+      POSTGRES_USER: gesinen
+      POSTGRES_PASSWORD: ER28-0652
+      POSTGRES_DB: gesinen
+      POSTGRES_PORT: 5432
+networks:
+  auth-network:
+    driver: bridge
